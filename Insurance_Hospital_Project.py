@@ -1,15 +1,30 @@
 #age: age of the individual in years /sex: 0 for female, 1 for male/ bmi: individual’s body mass index / num_of_children: number of children the individual has / smoker: 0 for a non-smoker, 1 for a smoker
+def analyze_smoker(smoker_status):
+   if smoker_status == 1:
+     print("To lower your cost, you should consider quitting smoking.")   
+   else:
+      print("Smoking is not an issue to you.")
 
-# Create calculate_insurance_cost() function below: 
+def analyze_bmi(bmi_value):
+  if bmi_value > 30:
+    print("Your BMI is in the obese range. To lower your cost, you should lower your BMI.")
+  elif bmi_value >= 25 and bmi_value <= 30:
+    print("Your BMI is in the overweight range. To lower your cost, you should lower your BMI.")
+  elif bmi_value >= 18.5 and bmi_value < 25:
+    print("Your BMI is in a healthy range.")
+  else:
+    print("Your BMI is in the underweight range. Increasing your BMI will not help lower your cost, but it will help improve your health..")
+  
 
-def calculate_insurance_cost(name, age, sex, bmi, num_of_children, smoker):
-  estimated_cost = 250 * age - 128 * sex + 370 * bmi + 425 * num_of_children + 24000 * smoker - 12500
-  print("The estimated insurance cost for " + name + " is " + str(estimated_cost) + " dollars.")
+# Function to estimate insurance cost:
+def estimate_insurance_cost(name, age, sex, bmi, num_of_children, smoker):
+  estimated_cost = 250*age - 128*sex + 370*bmi + 425*num_of_children + 24000*smoker - 12500
+  print(name + "'s Estimated Insurance Cost: " + str(estimated_cost) + " dollars.")
   return estimated_cost
+ 
+keanu_insurance_cost = estimate_insurance_cost(name = 'Keanu', age = 29, sex = 1, bmi = 26.2, num_of_children = 3, smoker = 1)
 
-# Estimate Maria's insurance cost
-maria_insurance_cost = calculate_insurance_cost("Maria", 28, 0, 26.2, 3, 0)
-# Estimate Omar's insurance cost 
-omar_insurance_cost = calculate_insurance_cost("Omar", 35, 1, 22.2, 0, 1)
-# This is going to be my own insurance cost
-rafael_insurance_cost = calculate_insurance_cost("Rafael", 17, 1, 24.5, 0, 0)
+rafael_insurance_cost = estimate_insurance_cost(name= 'Rafael', age = 18, sex = 1, bmi = 24.8, num_of_children = 0, smoker = 0)
+
+analyze_smoker(0)
+analyze_bmi(24.8)
